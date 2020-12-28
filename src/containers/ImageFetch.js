@@ -4,6 +4,11 @@ import Gallery from '../components/ImageGallery'
 import ImageFetchService from '../service/ImageFetchService';
 import Pagination from "@material-ui/lab/Pagination";
 
+/** Container for page wise image fetch and display 
+ * - Contains the local state which is updated and passed to the ImageGallery UI component 
+ * - Pixabay API request using ImageFetchService methods
+ * - material-ui pagination component to support paged view (6 items per page)
+ **/
 class ImageFetch extends Component {
     state = {
         images: [],
@@ -20,10 +25,11 @@ class ImageFetch extends Component {
       };
 
     componentDidMount () {
-        console.log(this.props);
+        // console.log(this.props);
         this.getImages();
     }
 
+    /* API request for images */
     getImages() {
         const { searchTitle, page, pageSize } = this.state;
         const params = this.getRequestParams('cars', page, pageSize);
@@ -37,6 +43,7 @@ class ImageFetch extends Component {
             } );
     }
 
+    /* Construct API request params */
     getRequestParams(searchTitle, page, pageSize) {
         let params = {};
 
@@ -55,6 +62,7 @@ class ImageFetch extends Component {
         return params;
     }
 
+    /* Handle pagination events */
     handlePageChange = (event, value) => {
         console.log(value);
         this.setState(
@@ -67,6 +75,7 @@ class ImageFetch extends Component {
 
       }
 
+    /* Navigate to Image detail view */
     getImageInfo = (id) => {
         // console.log('getting image details' + this.props);
         this.props.history.push('/' + id);
