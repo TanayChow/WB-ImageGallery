@@ -5,6 +5,10 @@ import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
+/** UI Component for image grid view 
+ * - material-ui components used for Gridview and GridTile and IconButton
+ * - Image details extracted from the props passed from the parent component
+ **/
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -24,17 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const Gallery = ( props ) => {
-    console.log(props);
-    let item;
-    /*const images = props.images.forEach( img => {
-            return <img key={img.id} src={img.imageURL} alt={img.tags} />;;
-    } );
-    if(props.images && props.images.length > 0) {
-        console.log(props.images[0].imageURL);
-        item = <img key={props.images[0].id} src={props.images[0].imageURL} alt={props.images[0].tags} />
-    } else {
-        item = <p>This is not possible</p>
-    }*/
+    // console.log(props);
     const classes = useStyles();
     return (
         <div className={classes.root}>  
