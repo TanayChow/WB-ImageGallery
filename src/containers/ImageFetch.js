@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../axios-api';
-import Gallery from '../components/ImageGallery'
 import ImageFetchService from '../service/ImageFetchService';
 import Pagination from "@material-ui/lab/Pagination";
+import GridView from '../components/GridView';
 
 /** Container for page wise image fetch and display 
  * - Contains the local state which is updated and passed to the ImageGallery UI component 
@@ -86,15 +86,9 @@ class ImageFetch extends Component {
 
         return (
             <div >
-            <Gallery images={this.state.images} onImageInfoClicked={this.getImageInfo}></Gallery>
+            <GridView images={this.state.images} onImageInfoClicked={this.getImageInfo}></GridView>
             <div style={this.mystyle}>
-            <Pagination 
-                        count={6}
-                        page={this.state.page}
-                        variant="outlined"
-                        shape="rounded"
-                        onChange={this.handlePageChange}
-                        />
+            <Pagination count={6} page={this.state.page} variant="outlined" shape="rounded" onChange={this.handlePageChange}/>
             </div>                        
             </div>
         );

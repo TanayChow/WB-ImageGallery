@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../components/ImageGallery.css'
+import classes from '../components/GridView.css'
 import {GridList, GridListTile, GridListTileBar, IconButton} from '@material-ui/core/';
 import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,20 +27,22 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const Gallery = ( props ) => {
+const GridView = ( props ) => {
     // console.log(props);
     const classes = useStyles();
+    const isDataAvailable = props && props.images.length > 0 ? true : false;
     return (
         <div className={classes.root}>  
+        {isDataAvailable ? 
             <GridList cellHeight={100} className={classes.gridList} spacing={8}>
             {props.images.map((img) => (
                 <GridListTile  cols={1} key={img.id}>
-                <Link to={'/' + img.id} key={img.id}><img src={img.previewURL} alt={img.tags} /> </Link>
+                <Link to={'/' + img.id} key={img.id}><img src={img.previewURL} alt={img.tags}/></Link>
                 <GridListTileBar
                 title='Created By'
                 subtitle={<span>by: {img.user}</span>}
                 actionIcon={
-                    <IconButton aria-label={`info about image`} className={classes.icon}
+                    <IconButton aria-label={`More Info`} className={classes.icon}
                     onClick={() => { props.onImageInfoClicked(img.id) }}>
                     <InfoIcon />
                     </IconButton>
@@ -50,8 +52,9 @@ const Gallery = ( props ) => {
 
             ))}
         </GridList>
+        : <p id='NoData'> No Data </p>}
         </div>
     );
 };
 
-export default Gallery;
+export default GridView;
