@@ -1,18 +1,27 @@
 # Image Gallery Implementation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-UI components were designed and implemented using [Material UI components](https://material-ui.com/)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+UI components were designed and implemented using [Material UI components](https://material-ui.com/).\
 [Axios](https://www.npmjs.com/package/axios) is used for API requests and async request handling
 
 ## Application architecture overview
 
 The application of a model view based architecture. These are further segregated into the following parts:
-1) Components - These are the UI components. They do not directly manipulate any states and are only presentational entities.
-2) Containers - Containers contain the state and are responsible for state transformation and event processing and passing the appropriate data to the child components (UI compoments)
-3) Services - Services are responsible for API calls and data fetching. (Axios is used by the service as an HTTP client)
+### 1) Components
+
+UI components which do not directly posess any states and are used only as presentational entities.
+
+### 2) Containers
+
+Contain the state and perform state transformation and event processing and data transfer to the child components (UI compoments)
+
+### 3) Services
+
+Responsible for API calls and data fetching. (Axios is used by the service as an HTTP client)
 
 
 ## Available Scripts
+
 As a pre-requisite it is necessary to install the dependencies
 
 ### `npm install` 
