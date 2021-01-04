@@ -14,7 +14,7 @@ The application of a model view based architecture. These are further segregated
 ## Available Scripts
 As a pre-requisite it is necessary to install the dependencies
 
-## `npm install` 
+### `npm install` 
 
 Install the dependencies and get the project ready for launch.
 
@@ -27,5 +27,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.
 
