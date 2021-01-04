@@ -1,7 +1,8 @@
 # Image Gallery Implementation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-UI components were designed and implemented using Material UI components
+UI components were designed and implemented using [Material UI components](https://material-ui.com/)
+[Axios](https://www.npmjs.com/package/axios) is used for API requests and async request handling
 
 ## Application architecture overview
 
