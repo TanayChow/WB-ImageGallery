@@ -3,7 +3,9 @@ import axios from '../axios-api';
 import ImageFetchService from '../service/ImageFetchService';
 import Pagination from "@material-ui/lab/Pagination";
 import GridView from '../components/GridView';
-
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import {IconButton} from '@material-ui/core/';
 /** Container for page wise image fetch and display 
  * - Contains the local state which is updated and passed to the ImageGallery UI component 
  * - Pixabay API request using ImageFetchService methods
@@ -14,7 +16,7 @@ class ImageFetch extends Component {
         images: [],
         searchTitle: '',
         page: 1,
-        pageSize: 6,
+        pageSize: 4,
         error: false
     }
 
@@ -25,8 +27,12 @@ class ImageFetch extends Component {
       };
 
     componentDidMount () {
-        // console.log(this.props);
+        console.log('Mount' + this.state.page);
         this.getImages();
+    }
+
+    componentWillUnmount () {
+        console.log('Unmount' + this.state.page);
     }
 
     /* API request for images */
@@ -38,7 +44,7 @@ class ImageFetch extends Component {
                 this.setState( { images: response.data.hits } );
             } )
             .catch( error => {
-                console.log('ERROR')
+                // console.log('ERROR')
                 this.setState( { error: true } );
             } );
     }
@@ -62,9 +68,22 @@ class ImageFetch extends Component {
         return params;
     }
 
-    /* Handle pagination events */
-    handlePageChange = (event, value) => {
-        console.log(value);
+    /* Handle icon clicked events */
+    handlePageIconClick = (value) => {
+        // console.log(value);
+        this.setState(
+          {
+            page: this.state.page + value,
+          }, () => {
+            this.getImages();
+          }
+        );
+
+      }
+
+      /* Handle pagination events */
+      handlePageChange = (event, value) => {
+        // console.log(value);
         this.setState(
           {
             page: value,
@@ -82,14 +101,23 @@ class ImageFetch extends Component {
     }
 
     render () {
-        console.log(this.state.images)
+        // console.log(this.state.images)
 
         return (
-            <div >
-            <GridView images={this.state.images} onImageInfoClicked={this.getImageInfo}></GridView>
+            <div>
             <div style={this.mystyle}>
-            <Pagination count={6} page={this.state.page} variant="outlined" shape="rounded" onChange={this.handlePageChange}/>
-            </div>                        
+            <IconButton onClick={() => this.handlePageIconClick(-1)}>
+            <ArrowBackIosIcon fontSize="large"/> 
+            </IconButton>
+                <GridView images={this.state.images} onImageInfoClicked={this.getImageInfo}></GridView>
+            <IconButton onClick={() => this.handlePageIconClick(1)}>
+            <ArrowForwardIosIcon fontSize="large"/> 
+            </IconButton>
+                     
+            </div>
+            <div style={this.mystyle}>
+                <Pagination count={6} page={this.state.page} variant="outlined" shape="rounded" onChange={this.handlePageChange}/>
+            </div>
             </div>
         );
     }

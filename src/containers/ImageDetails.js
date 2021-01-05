@@ -1,10 +1,13 @@
 
 import React, {Component} from 'react';
 import ImageFetchService from './../service/ImageFetchService';
-import { Button } from '@material-ui/core';
+import classes from './ImageDetails.css';
+import { Button, Divider } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import Avatar from '@material-ui/core/Avatar';
 import DownloadIcon from '@material-ui/icons/GetApp';
 import { Icon, Typography } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Paper from '@material-ui/core/Paper';
 import ViewsIcon from '@material-ui/icons/Visibility';
 import CommentsIcon from '@material-ui/icons/ChatBubble';
@@ -47,16 +50,62 @@ class ImageDetails extends Component {
     }
 
     render() {
+        const mystyle = {
+            display: "flex",
+            textAlign: 'center',
+            justifyContent: 'center',
+            backgroundColor: "lightgrey",
+            width: '100%',
+            height: '100%'
+          };
+          const userImageStyle = {
+            borderRadius: '50%'
+          };
         return (
             <div>
-                <img src={this.state.img.webformatURL} alt={this.state.img.tags} /> 
+            <div style={mystyle}>
+                
                 <Paper variant="outlined" square>
-                <Typography variant="body2" color="textSecondary" component="p"> <ViewsIcon fontSize="small"/> {this.state.img.views} </Typography>
-                <Typography variant="body2" color="textSecondary" component="p"> <DownloadIcon fontSize="small"/> {this.state.img.views} </Typography>
-                <Typography variant="body2" color="textSecondary" component="p"> <span> <ThumbUpAltIcon fontSize="small"/>  {this.state.img.likes}</span> </Typography>
-                <Typography variant="body2" color="textSecondary" component="p"> <CommentsIcon fontSize="small"/> {this.state.img.likes} </Typography>
+                
+                <img style={userImageStyle} src={this.state.img.userImageURL} alt={this.state.img.user} />
+                <Divider />
+                
+                <div>
+                <AccountCircleIcon/> 
+                <Typography  variant="body2" color="textPrimary" component="p"> {this.state.img.user} </Typography> 
+                </div>
+                <Divider />
+
+                <div>
+                <ViewsIcon fontSize="small"/> 
+                <Typography variant="body2" color="textPrimary" component="p"> {this.state.img.views} </Typography> 
+                </div>
+                <Divider />
+                
+                <div>
+                <DownloadIcon fontSize="small"/>
+                <Typography variant="body2" color="textPrimary" component="p">  {this.state.img.downloads} </Typography>
+                </div>
+                <Divider />
+
+                <div>
+                <ThumbUpAltIcon fontSize="small"/>  
+                <Typography variant="body2" color="textPrimary" component="p">{this.state.img.likes} </Typography>
+                </div>
+                <Divider />
+
+                <div>
+                <CommentsIcon fontSize="small"/> 
+                <Typography variant="body2" color="textPrimary" component="p">{this.state.img.comments} </Typography>
+                </div>
+                <Divider />
+
                 </Paper>
-                <Button color="primary" onClick={this.onBack}> BACK </Button>
+                <img style={mystyle} src={this.state.img.webformatURL} alt={this.state.img.tags} /> 
+            </div>
+
+
+            <Button color="primary" onClick={this.onBack}> BACK </Button>
             </div>
         )
     }
