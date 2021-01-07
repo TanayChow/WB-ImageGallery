@@ -22,7 +22,7 @@ class ImageDetails extends Component {
     }
 
     componentDidMount () {
-        console.log(this.props);
+        // console.log(this.props);
         this.getImageDetails();
     }
 
@@ -45,12 +45,12 @@ class ImageDetails extends Component {
 
     /** Handle back navigation to the home page */
     onBack = () => {
-        console.log(this.props);
+        // console.log(this.props);
         this.props.history.push('/');
     }
 
     render() {
-        const mystyle = {
+        const containerStyle = {
             display: "flex",
             textAlign: 'center',
             justifyContent: 'center',
@@ -63,13 +63,13 @@ class ImageDetails extends Component {
           };
         return (
             <div>
-            <div style={mystyle}>
+            <div style={containerStyle}>
                 
                 <Paper variant="outlined" square>
                 
                 <img style={userImageStyle} src={this.state.img.userImageURL} alt={this.state.img.user} />
                 <Divider />
-                
+
                 <div>
                 <AccountCircleIcon/> 
                 <Typography  variant="body2" color="textPrimary" component="p"> {this.state.img.user} </Typography> 
@@ -101,7 +101,7 @@ class ImageDetails extends Component {
                 <Divider />
 
                 </Paper>
-                <img style={mystyle} src={this.state.img.webformatURL} alt={this.state.img.tags} /> 
+                <img style={containerStyle} src={this.state.img.webformatURL} alt={this.state.img.tags} /> 
             </div>
 
 

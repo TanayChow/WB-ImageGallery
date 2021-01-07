@@ -6,13 +6,13 @@ var URL = "https://pixabay.com/api/?key="+API_KEY
 class ImageGalleryDataService {
   /** METHOD to fetch all images */
   getAll(params) {
-    console.log(params);
+    // console.log(params);
     return axios.get(URL, { params });
   }
 
   /** METHOD to fetch single image */
   getImageDetails(params) {
-    console.log(params);
+    // console.log(params);
     return axios.get(URL, { params });
   }
 }

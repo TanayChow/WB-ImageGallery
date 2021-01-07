@@ -20,19 +20,19 @@ class ImageFetch extends Component {
         error: false
     }
 
-    mystyle = {
+    containerStyle = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       };
 
     componentDidMount () {
-        console.log('Mount' + this.state.page);
+        // console.log('Mount' + this.state.page);
         this.getImages();
     }
 
     componentWillUnmount () {
-        console.log('Unmount' + this.state.page);
+        // console.log('Unmount' + this.state.page);
     }
 
     /* API request for images */
@@ -105,7 +105,7 @@ class ImageFetch extends Component {
 
         return (
             <div>
-            <div style={this.mystyle}>
+            <div style={this.containerStyle}>
             <IconButton onClick={() => this.handlePageIconClick(-1)}>
             <ArrowBackIosIcon fontSize="large"/> 
             </IconButton>
@@ -115,7 +115,7 @@ class ImageFetch extends Component {
             </IconButton>
                      
             </div>
-            <div style={this.mystyle}>
+            <div style={this.containerStyle}>
                 <Pagination count={6} page={this.state.page} variant="outlined" shape="rounded" onChange={this.handlePageChange}/>
             </div>
             </div>
