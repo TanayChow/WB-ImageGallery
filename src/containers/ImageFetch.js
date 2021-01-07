@@ -94,7 +94,7 @@ class ImageFetch extends Component {
 
       }
 
-    /* Navigate to Image detail view */
+    /* Navigate to Image detail view when info icon is clicked */
     getImageInfo = (id) => {
         // console.log('getting image details' + this.props);
         this.props.history.push('/' + id);

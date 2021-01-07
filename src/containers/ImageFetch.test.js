@@ -6,11 +6,14 @@ import {GridList, GridListTile, GridListTileBar, IconButton} from '@material-ui/
 import axios from 'axios';
 import ImageDataService from '../service/ImageFetchService';
 
+
+
 configure({    adapter : new Adapter()})
-// jest.mock('axios');
+
 
 describe('Testing <ImageFetch> pagination', () => {
     it('Should render correct page of items if previous / forward button clicked', ()=> {
+
         const wrapper = shallow(<ImageFetch />);
         expect(wrapper.find(IconButton)).toHaveLength(2);
         var prevPageVal = wrapper.state('page');
