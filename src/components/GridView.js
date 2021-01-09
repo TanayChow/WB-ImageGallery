@@ -44,31 +44,23 @@ const GridView = ( props ) => {
     const isDataAvailable = props && props.images.length > 0 ? true : false;
     return (
         <div className={classes.root}>  
-
-
         {isDataAvailable ? 
             <GridList cellHeight={100} className={classes.gridList} spacing={4}>
             {props.images.map((img) => (
                 <GridListTile  style={{ height: 'auto' }} cols={1} key={img.id}>
                 <Link to={'/' + img.id} key={img.id}><img style={{ width: '100%' }} src={img.webformatURL} alt={img.tags}/></Link>
-                <GridListTileBar
-                
-                subtitle={<span>{img.user}</span>}
+                <GridListTileBar subtitle={<span>{img.user}</span>}
                 actionIcon={
-                    <IconButton aria-label={`More Info`} className={classes.icon}
+                    <IconButton id='detailsIcon' aria-label={`More Info`} className={classes.icon}
                     onClick={() => { props.onImageInfoClicked(img.id) }}>
                     <InfoIcon />
                     </IconButton>
                 }
                 />
                 </GridListTile>
-
             ))}
         </GridList>
         : <p id='NoData'> No Data </p>}
-        
-
-
         </div>
     );
 };

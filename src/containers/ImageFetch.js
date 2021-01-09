@@ -72,9 +72,9 @@ class ImageFetch extends Component {
     handlePageIconClick = (value) => {
         // console.log(value);
         this.setState(
-          {
-            page: this.state.page + value,
-          }, () => {
+        (prevState, props) => {
+            return {page: prevState.page + value};
+            }, () => {
             this.getImages();
           }
         );
