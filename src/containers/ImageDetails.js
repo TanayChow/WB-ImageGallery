@@ -84,19 +84,19 @@ class ImageDetails extends Component {
                 
                 <div>
                 <DownloadIcon fontSize="small"/>
-                <Typography variant="body2" color="textPrimary" component="p">  {this.state.img.downloads} </Typography>
+                <Typography variant="body2" color="textPrimary" component="p"> {this.state.img.downloads} </Typography>
                 </div>
                 <Divider />
 
                 <div>
                 <ThumbUpAltIcon fontSize="small"/>  
-                <Typography variant="body2" color="textPrimary" component="p">{this.state.img.likes} </Typography>
+                <Typography variant="body2" color="textPrimary" component="p"> {this.state.img.likes} </Typography>
                 </div>
                 <Divider />
 
                 <div>
                 <CommentsIcon fontSize="small"/> 
-                <Typography variant="body2" color="textPrimary" component="p">{this.state.img.comments} </Typography>
+                <Typography variant="body2" color="textPrimary" component="p"> {this.state.img.comments} </Typography>
                 </div>
                 <Divider />
 

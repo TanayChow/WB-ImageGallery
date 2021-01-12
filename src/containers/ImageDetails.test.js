@@ -45,7 +45,19 @@ describe('Testing <ImageDetails> page', () => {
         const data = await ImageDataService.getImageDetails({id: 195893});
         const wrapper = shallow(<ImageDetails />,  { disableLifecycleMethods: true });
         wrapper.setState({img: data.hits});
+
+        // Checking the image elements
         expect(wrapper.find('img')).toHaveLength(2);
+        expect(wrapper.find("img").at(0).prop('src')).toEqual(data.hits.userImageURL);
+        expect(wrapper.find("img").at(1).prop('src')).toEqual(data.hits.webformatURL);
+        
+        // Checking text elements 
         expect(wrapper.find(Typography)).toHaveLength(5);
+        expect(wrapper.find(Typography).at(0).text()).toEqual(' ' + data.hits.user + ' ');
+        expect(wrapper.find(Typography).at(1).text()).toEqual(' ' + data.hits.views + ' ');
+        expect(wrapper.find(Typography).at(2).text()).toEqual(' ' + data.hits.downloads + ' ');
+        expect(wrapper.find(Typography).at(3).text()).toEqual(' ' + data.hits.likes + ' ');
+        expect(wrapper.find(Typography).at(4).text()).toEqual(' ' + data.hits.comments + ' ');
+        
     })
 })
